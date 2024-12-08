@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="bloodfindorregister.css">
+  <title>successfully registered page</title>
+</head>
+
+<body>
+  <div class="header">
+<a onclick="window.location.href='index.html'" >Home</a>
+<a onclick="window.location.href="aboutus.html" >About Us</a>
+<a onclick="window.location.href='contactus.html'" >Contact</a>
+</div>
+    
+<div id = "result">
+
+</div>
+<button onclick="window.location.href='index.html'"  class="home">go home</button>
+<button onclick="window.location.href='register.html'" class="back">go back</button>
+
+<script>
+let donor = JSON.parse(localStorage.getItem("recentdonor"));
+  let resultdiv = document.getElementById('result');
+if(donor){
+
+ resultdiv.innerHTML = `<p>
+<h2>Register successfully</h2>
+ <strong>Name</strong> : ${donor.names}<br>
+  <strong>Contact</strong> : ${donor.contact}<br>
+   <strong>District</strong> : ${donor.district}<br> 
+   <strong>Picode</strong> : ${donor.pincode}<br> 
+   <strong>Whatsapp number</strong> : ${donor.whatsapp}<br>
+   <strong>Bloodgroup</strong> : ${donor.bloodgroup}<hr>
+ </p>`
+}
+</script>
+</body>
+
+</html>

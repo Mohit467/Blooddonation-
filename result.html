@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="bloodfindorregister.css">
+  <title>blood donor page</title>
+</head>
+
+<body>
+  <div class="header">
+<a onclick="window.location.href='index.html'" >Home</a>
+<a onclick="window.location.href="aboutus.html" >About Us</a>
+<a onclick="window.location.href='contactus.html'" >Contact</a>
+</div>
+  <p>note :- And for more information, click on the icons to talk to the donor or call him. </p>
+<div id = "results"></div>
+<button onclick="window.location.href='index.html'"  class="home">go home</button>
+<button onclick="window.location.href='bloodfind.html'" class="back">go back</button>
+<script>
+  
+    let resultdiv = document.getElementById('results')
+    resultdiv.innerHTML='';
+    
+    let filterddonors = JSON.parse(localStorage.getItem("filterddonors")) || [];
+    
+     if (filterddonors.length > 0){
+      for (let i=0; i<filterddonors.length; i++){
+        let donor = filterddonors[i]
+           
+
+        resultdiv.innerHTML += `<h2>Blood Donor Details</h2>
+        <P>
+        <strong>Name</strong>: ${donor.names}<br>
+        <strong>bloodgroup</strong>: ${donor.bloodgroup}<br>
+        <strong>district</strong>: ${donor.district}<br>
+        <strong>pincode</strong>: ${donor.pincode}<br>
+        <strong>WhatsApp number</strong>: ${donor.whatsapp}<br>
+        <strong>contact</strong>: ${donor.contact}<hr>
+        </P>
+        <div>
+        <a class="icon" href="tel:${donor.contact}" target = "_balnk"><img src = "call.png"></a>
+        <a class = "icon" href="http://wa.me/${donor.whatsapp}" target= "_blank"><img src = "whatsapp.png"></a>
+        </div>`
+        
+      }
+    
+   } else{
+      resultdiv.innerHTML=
+      '<p>donors not found</p>'
+    }
+  
+</script>
+</body>
+
+</html>
